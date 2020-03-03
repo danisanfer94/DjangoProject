@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>admin panel</title>
+    <style media="screen">
+      table,td,th{
+        border:1px black solid;
+        text-align:center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ADMIN DASHBOARD</h1>
+
+    <form class="" action="/administrador/" method="post">{% csrf_token %}
+      <input type="submit" name="submit" value="Mostrar usuaris">
+    </form>
+    <form class="" action="/administrador/" method="post">{% csrf_token %}
+      <input type="submit" name="submit" value="Mostrar fails">
+    </form>
+    <form class="" action="/administrador/" method="post">{% csrf_token %}
+      <input type="submit" name="submit" value="Eliminar fails">
+    </form>
+    {% if param == "users" %}
+    <h3>Llista d'usuaris</h3>
+
+      <table>
+        <tr>
+          <th>USERNAME</th>
+          <th>PASSWORD</th>
+          <th>LOGIN TIMES</th>
+        </tr>
+        {% for i in ok %}
+        <tr>
+          <td>{{i.username}}</td>
+          <td>{{i.password}}</td>
+          <td>{{i.logins}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+    {% elif param == "fails" %}
+      <h3>Login Fails</h3>
+      {% if len == 0 %}
+        <p>No hi han registres fails</p>
+      {% else %}
+        <table>
+          <tr>
+            <th>USERNAME</th>
+            <th>PASSWORD</th>
+            <th>DATE TIME</th>
+          </tr>
+          {% for i in ok %}
+            <tr>
+              <td>{{i.username}}</td>
+              <td>{{i.password}}</td>
+              <td>{{i.datetime}}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      {% endif %}
+    {% elif param == "dropfails" %}
+      <h3>{{ok}}</h3>
+    {% endif %}
+  </body>
+</html>

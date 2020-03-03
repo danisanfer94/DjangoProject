@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cat" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Registra't</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+    <style media="screen">
+    .container{
+      display:block;
+      margin:auto;
+      width:400px;
+      padding:20px;
+      background-color:rgb(134, 134, 134,0.4);
+      border: solid 5px black;
+      border-radius:20px;
+      margin-top:50px;
+    }
+
+    .container label{
+      display:block;
+      margin-top:20px;
+    }
+
+    .container input{
+      padding:5px;
+      border-radius:5px;
+      border: solid 1px black;
+    }
+
+    #submit{
+      margin-left:70px;
+      padding:10px;
+      border-radius:5px;
+    }
+
+    a{
+      background-color:rgb(174, 237, 199);
+      color:black;
+      text-decoration:none;
+      padding:10px;
+      border: 1px black solid;
+      border-radius:5px;
+    }
+    .header-form{
+      display:inline;
+      text-size:
+    }
+    span{
+      font-size:24px;
+      font-weight:bold;
+      margin-right:50%;
+    }
+
+    .error{
+      color:red;
+      font-weight:bold;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-form">
+        <span>Registra't</span>
+        <a href="/login/">Login</a>
+      </div>
+      <p class="error">{{ok}}</p>
+      <form class="" action="/" method="post">{% csrf_token %}
+        <label for="username">USERNAME</label>
+        <input type="text" name="username" value="" required>
+        <label for="password">PASSWORD</label>
+        <input type="password" name="password" value="" required>
+        <label for="password2">CONFIRM PASSWORD</label>
+        <input type="password" name="password2" value="" required>
+        <input id="submit" type="submit" name="submit" value="Registra'm">
+      </form>
+    </div>
+  </body>
+</html>
